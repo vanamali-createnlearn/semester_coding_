@@ -1,0 +1,31 @@
+--Use these codes one after the other 
+--Code 1: Example of variable
+local var = 10
+print("Congrats on storing your first variable var=" .. var)
+
+--Code 2: Operator example with help of speed boost
+local speedPad = workspace.SpeedPad
+local boost = 50
+
+speedPad.Touched:Connect(function(hit)
+	local humanoid = hit.Parent:FindFirstChild("Humanoid")
+	if humanoid then
+		humanoid.WalkSpeed = humanoid.WalkSpeed + boost
+		print("New speed: " .. humanoid.WalkSpeed)
+	end
+end)
+--Explain how and where variables are used, operators are used like "/,*"
+
+--Code 3 Comparision operators and Conditional Statements
+local door = workspace.Door
+local score = 5
+
+if score >= 5 then
+	door.Transparency = 0.5
+	door.CanCollide = false
+	print("Door unlocked!")
+else
+	print("Door still locked. Collect more coins!")
+end
+
+
