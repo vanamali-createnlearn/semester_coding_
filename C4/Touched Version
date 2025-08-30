@@ -1,0 +1,20 @@
+local part = script.Parent
+
+part.Touched:Connect(function(hit)
+	local character = hit.Parent
+	local player = game.Players:GetPlayerFromCharacter(character)
+
+	if player then
+		-- Create a new Tool
+		local tool = Instance.new("Tool")
+		tool.Name = "PickedUpTool"
+		tool.RequiresHandle = true
+
+		-- Turn the actual touched part into the Handle
+		part.Parent = tool
+		part.Name = "Handle"
+
+		-- Put the tool into the player's Backpack
+		tool.Parent = player:WaitForChild("Backpack")
+	end
+end)
