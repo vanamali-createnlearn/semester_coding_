@@ -1,0 +1,16 @@
+local part = script.Parent
+local clickDetector = part:WaitForChild("ClickDetector")
+
+clickDetector.MouseClick:Connect(function(player)
+	-- Create a new Tool
+	local tool = Instance.new("Tool")
+	tool.Name = "PickedUpTool"
+	tool.RequiresHandle = true
+
+	-- Turn the actual clicked part into the Handle
+	part.Parent = tool
+	part.Name = "Handle"
+
+	-- Put the tool into the player's Backpack
+	tool.Parent = player:WaitForChild("Backpack")
+end)
