@@ -1,0 +1,11 @@
+-- Normal Clone Script
+local original = game.Workspace.OriginalPart -- the part you want to copy
+
+-- Make a clone
+local clone = original:Clone()
+
+-- Set the parent so it shows in the game
+clone.Parent = game.Workspace
+
+-- Move the clone so it's not on top of the original
+clone.Position = Vector3.new(0, 5, 0)
