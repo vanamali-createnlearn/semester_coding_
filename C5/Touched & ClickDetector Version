@@ -1,0 +1,25 @@
+-- Clone with ClickDetector
+local button = script.Parent -- part with ClickDetector
+local original = game.Workspace.OriginalPart -- the thing to clone
+local clickDetector = button:WaitForChild("ClickDetector")
+
+clickDetector.MouseClick:Connect(function(player)
+	local clone = original:Clone()
+	clone.Parent = game.Workspace
+	clone.Position = Vector3.new(0, 5, 0) -- spawn above
+end)
+
+--these are two separate scripts
+
+-- Clone with Touch Event
+local triggerPart = script.Parent -- part players will touch
+local original = game.Workspace.OriginalPart -- thing to clone
+
+triggerPart.Touched:Connect(function(hit)
+	local humanoid = hit.Parent:FindFirstChild("Humanoid")
+	if humanoid then
+		local clone = original:Clone()
+		clone.Parent = game.Workspace
+		clone.Position = Vector3.new(0, 5, 0) -- spawn above
+	end
+end)
