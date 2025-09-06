@@ -1,0 +1,13 @@
+local button = game.Workspace.Button -- button part with ClickDetector
+local original = game.Workspace.OriginalPart -- part to be cloned
+local clickDetector = button:WaitForChild("ClickDetector")
+
+clickDetector.MouseClick:Connect(function(player)
+	local clone = original:Clone()
+	clone.Parent = game.Workspace
+	clone.Position = Vector3.new(math.random(-10, 10), 5, math.random(-10, 10))
+	
+	-- Bonus: Change properties
+	clone.BrickColor = BrickColor.Random()
+	clone.Size = Vector3.new(3, 3, 3)
+end)
