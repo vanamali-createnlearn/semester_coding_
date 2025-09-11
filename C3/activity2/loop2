@@ -1,0 +1,18 @@
+local clickedPart = script.Parent
+local clickDetector = clickedPart:WaitForChild("ClickDetector")
+
+local padFolder = workspace:WaitForChild("Pads")
+local pads = {
+	padFolder:WaitForChild("Pad1"),
+	padFolder:WaitForChild("Pad2"),
+	padFolder:WaitForChild("Pad3"),
+	padFolder:WaitForChild("Pad4")
+}
+
+clickDetector.MouseClick:Connect(function(player)
+	for i, pad in ipairs(pads) do 
+		print("Coloring Pad #"..i)
+		pad.BrickColor = BrickColor.Random()
+		wait(1)
+	end
+end)
