@@ -1,0 +1,23 @@
+local partA = workspace.PartA
+local partB = workspace.PartB
+local partC = workspace.PartC
+
+local function surpriseEffect(part)
+  print("Clicked:", part.Name)
+  part.Position = part.Position + Vector3.new(0,5,0)
+  part.BrickColor = BrickColor.Random()
+  part.Size = part.Size * 3
+  wait(0.5) 
+  part.Size = part.Size/3
+  part.Position = part.Position - Vector3.new(0,5,0)
+end
+
+partA.ClickDetector.MouseClick:Connect(function(player)
+  surpriseEffect(partA)
+end)
+partB.ClickDetector.MouseClick:Connect(function(player)
+  surpriseEffect(partB)
+end)
+partC.ClickDetector.MouseClick:Connect(function(player)
+  surpriseEffect(partC)
+end)
