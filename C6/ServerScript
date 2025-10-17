@@ -1,0 +1,6 @@
+--place it inside ServerScriptService
+local remote = game.ReplicatedStorage:WaitForChild("ButtonClicked")
+
+remote.OnServerEvent:Connect(function(player)
+    print(player.Name .. " clicked the button!")
+end)
