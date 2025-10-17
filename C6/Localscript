@@ -1,0 +1,6 @@
+--place inside the TextButton in ScreenGui that was created
+local remote = game.ReplicatedStorage:WaitForChild("ButtonClicked")
+
+script.Parent.MouseButton1Click:Connect(function()
+    remote:FireServer()  
+end)
