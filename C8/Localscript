@@ -1,0 +1,37 @@
+-- LocalScript inside GUI Button
+local button = script.Parent
+local cooldownTime = 5  -- seconds before button can be used again
+local boostTime = 3     -- seconds of speed boost
+local boostedSpeed = 50
+local isOnCooldown = false
+
+local player = game.Players.LocalPlayer
+
+button.MouseButton1Click:Connect(function()
+	if isOnCooldown then return end  -- prevent spam clicks
+
+	local character = player.Character or player.CharacterAdded:Wait()
+	local humanoid = character:WaitForChild("Humanoid")
+
+	-- Apply speed boost
+	humanoid.WalkSpeed = boostedSpeed
+	button.Text = "Speed Boost!"
+	button.BackgroundColor3 = Color3.fromRGB(255, 200, 100)
+	
+	-- Short effect duration
+	task.wait(boostTime)
+	humanoid.WalkSpeed = 16  -- default speed
+	button.Text = "Recharging..."
+	button.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+	button.AutoButtonColor = false
+	button.TextTransparency = 0.5
+	isOnCooldown = true
+
+	-- Wait for cooldown to finish
+	task.wait(cooldownTime)
+	button.Text = "Speed Boost Ready!"
+	button.TextTransparency = 0
+	button.AutoButtonColor = true
+	button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	isOnCooldown = false
+end)
