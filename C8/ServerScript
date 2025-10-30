@@ -3,7 +3,7 @@ local powerUp = script.Parent
 local lifespan = 10  -- seconds before disappearing
 local startTime = tick()
 
--- Optional color change effect
+-- Optional color change effect and print block
 task.spawn(function()
 	while powerUp and powerUp.Parent do
 		local elapsed = tick() - startTime
