@@ -8,6 +8,7 @@ task.spawn(function()
 	while powerUp and powerUp.Parent do
 		local elapsed = tick() - startTime
 		local remaining = lifespan - elapsed
+		print("Time Remaining:"..remaining)
 		if remaining <= 0 then break end
 
 		if remaining <= 3 then
