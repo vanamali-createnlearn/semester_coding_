@@ -1,0 +1,28 @@
+-- ServerScript inside PowerUp Part
+local powerUp = script.Parent
+local lifespan = 10  -- seconds before disappearing
+local startTime = tick()
+
+-- Optional color change effect
+task.spawn(function()
+	while powerUp and powerUp.Parent do
+		local elapsed = tick() - startTime
+		local remaining = lifespan - elapsed
+		if remaining <= 0 then break end
+
+		if remaining <= 3 then
+			powerUp.BrickColor = BrickColor.new("Bright red")
+		else
+			powerUp.BrickColor = BrickColor.new("Bright green")
+		end
+
+		task.wait(1)
+	end
+end)
+
+-- Destroy after time limit
+task.wait(lifespan)
+if powerUp and powerUp.Parent then
+	powerUp:Destroy()
+	print("Power-up destroyed after " .. lifespan .. " seconds.")
+end
