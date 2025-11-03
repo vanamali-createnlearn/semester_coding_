@@ -1,3 +1,4 @@
+--Add these codes in ServerScriptService
 --Use these codes one after the other 
 --Code 1: Example of variable
 local var = 10
