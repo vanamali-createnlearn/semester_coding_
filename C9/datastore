@@ -4,19 +4,19 @@ local DataStoreService = game:GetService("DataStoreService")
 local coinsStore = DataStoreService:GetDataStore("PlayerCoins")
 
 game.Players.PlayerAdded:Connect(function(player)
-	local coins = player.leaderstats.Coins
+	local leaderstats = player:WaitForChild("leaderstats")
+	local coins = leaderstats:WaitForChild("Coins")
 
-	-- Load saved coins
 	local savedCoins = coinsStore:GetAsync(player.UserId)
 	if savedCoins then
 		coins.Value = savedCoins
 	end
 
-	-- Save whenever coins change
 	coins.Changed:Connect(function()
 		coinsStore:SetAsync(player.UserId, coins.Value)
 	end)
 end)
+
 
 game.Players.PlayerRemoving:Connect(function(player)
 	coinsStore:SetAsync(player.UserId, player.leaderstats.Coins.Value)
