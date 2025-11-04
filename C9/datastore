@@ -1,0 +1,23 @@
+--add this in serverscriptservice, after adding the leaderstats and coin activity from C7
+-- Simple DataStore Save + Load for Coins
+local DataStoreService = game:GetService("DataStoreService")
+local coinsStore = DataStoreService:GetDataStore("PlayerCoins")
+
+game.Players.PlayerAdded:Connect(function(player)
+	local coins = player.leaderstats.Coins
+
+	-- Load saved coins
+	local savedCoins = coinsStore:GetAsync(player.UserId)
+	if savedCoins then
+		coins.Value = savedCoins
+	end
+
+	-- Save whenever coins change
+	coins.Changed:Connect(function()
+		coinsStore:SetAsync(player.UserId, coins.Value)
+	end)
+end)
+
+game.Players.PlayerRemoving:Connect(function(player)
+	coinsStore:SetAsync(player.UserId, player.leaderstats.Coins.Value)
+end)
