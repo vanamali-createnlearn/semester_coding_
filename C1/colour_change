@@ -1,4 +1,7 @@
 local part = script.Parent
+wait(3)
 part.BrickColor = BrickColor.new("Lavender")
 wait(3)
+print("Colour will change to red")
+wait(1)
 part.BrickColor = BrickColor.new("Really red")
