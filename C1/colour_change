@@ -1,5 +1,4 @@
 local part = script.Parent
-part.Touched:Connect(function(hit)
-	part.BrickColor = BrickColor.new("Bright blue") -- change to Bright blue
-end)
-
+part.BrickColor = BrickColor.new("Lavender")
+wait(3)
+part.BrickColor = BrickColor.new("Really red")
