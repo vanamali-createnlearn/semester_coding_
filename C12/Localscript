@@ -1,0 +1,10 @@
+local gui = script.Parent  -- ShopGui
+local event = game.ReplicatedStorage:WaitForChild("ShowGuiEvent")
+
+event.OnClientEvent:Connect(function()
+	gui.Enabled = true
+
+	task.wait(3)
+
+	gui.Enabled = false
+end)
