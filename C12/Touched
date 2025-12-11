@@ -1,0 +1,9 @@
+local part = script.Parent
+local event = game.ReplicatedStorage:WaitForChild("ShowGuiEvent")
+
+part.Touched:Connect(function(hit)
+	local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+	if player then
+		event:FireClient(player)
+	end
+end)
