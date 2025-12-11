@@ -1,0 +1,6 @@
+local part = script.Parent
+local event = game.ReplicatedStorage:WaitForChild("ShowGuiEvent")
+
+part.ClickDetector.MouseClick:Connect(function(player)
+	event:FireClient(player)
+end)
