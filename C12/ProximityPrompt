@@ -1,0 +1,6 @@
+local prompt = script.Parent:WaitForChild("ProximityPrompt")
+local event = game.ReplicatedStorage:WaitForChild("ShowGuiEvent")
+
+prompt.Triggered:Connect(function(player)
+	event:FireClient(player)
+end)
