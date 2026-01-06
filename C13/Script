@@ -27,6 +27,7 @@ prompt.Triggered:Connect(function(player)
 
 	local humanoid = player.Character and player.Character:FindFirstChild("Humanoid")
 	if humanoid then
+		humanoid.UseJumpPower = true
 		humanoid.JumpPower = 100
 	end
 end)
