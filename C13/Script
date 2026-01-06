@@ -1,0 +1,32 @@
+--put under the proximity prompt
+local prompt = script.Parent
+
+prompt.Triggered:Connect(function(player)
+	-- Get the player's leaderstats
+	local leaderstats = player:FindFirstChild("leaderstats")
+	if not leaderstats then return end
+
+	local coins = leaderstats:FindFirstChild("Coins")
+	if not coins then return end
+
+	-- Check if the player already has a jump boost
+	if player:GetAttribute("JumpBoostActive") then
+		return
+	end
+
+	-- Check if player has enough coins
+	if coins.Value < 2 then
+		return
+	end
+
+	-- Deduct coins
+	coins.Value -= 2
+
+	-- Activate jump boost
+	player:SetAttribute("JumpBoostActive", true)
+
+	local humanoid = player.Character and player.Character:FindFirstChild("Humanoid")
+	if humanoid then
+		humanoid.JumpPower = 100
+	end
+end)
