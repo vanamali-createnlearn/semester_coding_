@@ -6,7 +6,7 @@ prompt.Triggered:Connect(function(player)
 	local leaderstats = player:FindFirstChild("leaderstats")
 	if not leaderstats then return end
 
-	local coins = leaderstats:FindFirstChild("Coins")
+	local coins = leaderstats:FindFirstChild("Coins") --replace with your leaderstats name
 	if not coins then return end
 
 	-- Check if the player already has a jump boost
